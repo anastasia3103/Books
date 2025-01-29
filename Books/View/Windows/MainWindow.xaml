@@ -1,0 +1,43 @@
+﻿<Window x:Class="Books.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Books"
+        mc:Ignorable="d"
+        Title="Список книг" Height="720" Width="1200" WindowStartupLocation="CenterScreen"
+        MinHeight="400" MinWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <!--#region Меню-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="80" />
+                  <ColumnDefinition Width="20" />
+                  <ColumnDefinition Width="80" />
+                  <ColumnDefinition Width="20" />
+                  <ColumnDefinition Width="80" />
+                  <ColumnDefinition Width="20" />
+                  <ColumnDefinition Width="1*" />
+             </Grid.ColumnDefinitions>
+
+            <Button Name="ListViewBtn" Content="Lv" Click="ListViewBtn_Click"/>
+            
+            <Button Name="ListBoxBtn" Content="LB" Grid.Column="2" Click="ListBoxBtn_Click"/>
+            
+            <Button Name="DataGridBtn" Content="DG" Grid.Column="4" Click="DataGridBtn_Click"/>
+        </Grid>
+        <!--#endregion-->
+        
+        <!--region Список книг-->
+        <Frame Grid.Row="2" NavigationUIVisibility="Hidden"/>
+        <!--#endregion-->
+
+
+
+    </Grid>
+</Window>
