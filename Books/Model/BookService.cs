@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Books.Model
 {
@@ -14,18 +16,26 @@ namespace Books.Model
 
         public List<Book> Books { get; private set; }
 
-        public async Task LoadBookAsync()
+        public async Task<List<Book>> LoadBooksAsync()
         {
             try
             {
                 HttpClient client = new();
-                var response = await client.GetAsync(JSON_PATH);
+                var response = await client.GetStringAsync(JSON_PATH);
+
+                if(!string.IsNullOrEmpty(response))
+                {
+                    Books = JsonConvert.DeserializeObject<List<Book>>(response);
+                }
+
+
             }
 
-            catch
+            catch (Exception exception)
             {
-
+                MessageBox.Show(exception.Message);
             }
+                return Books;
         }
     }
 }

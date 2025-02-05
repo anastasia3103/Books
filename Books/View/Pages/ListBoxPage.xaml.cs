@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Books.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,16 @@ namespace Books.View.Pages
     /// </summary>
     public partial class ListBoxPage : Page
     {
+        BookService _bookService;
         public ListBoxPage()
         {
             InitializeComponent();
+            _bookService = new BookService();
+        }
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+                BooksLb.ItemsSource = await _bookService.LoadBooksAsync();
         }
     }
 }
